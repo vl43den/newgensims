@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using newgensims.DTOs;
 using newgensims.Services;
+using newgensims.Models; // Assuming the Incident model is in this namespace
 
 //Version 0.1
 
@@ -19,9 +19,9 @@ namespace newgensims.Controllers
 
         // POST: api/Incident
         [HttpPost]
-        public IActionResult CreateIncident(IncidentDto incidentDto)
+        public IActionResult CreateIncident(Incident incident)
         {
-            var result = _incidentService.CreateIncident(incidentDto);
+            var result = _incidentService.CreateIncident(incident);
             if (!result.Success)
                 return BadRequest(result.Message);
 
@@ -41,9 +41,9 @@ namespace newgensims.Controllers
 
         // PUT: api/Incident/{id}
         [HttpPut("{id}")]
-        public IActionResult UpdateIncident(int id, IncidentDto incidentDto)
+        public IActionResult UpdateIncident(int id, Incident incident)
         {
-            var result = _incidentService.UpdateIncident(id, incidentDto);
+            var result = _incidentService.UpdateIncident(id, incident);
             if (!result.Success)
                 return BadRequest(result.Message);
 

@@ -183,6 +183,7 @@
 /home/vlaeden/newgensims/UserApi/obj/Debug/net8.0/UserApi.csproj.CoreCompileInputs.cache
 /home/vlaeden/newgensims/UserApi/obj/Debug/net8.0/UserApi.MvcApplicationPartsAssemblyInfo.cs
 /home/vlaeden/newgensims/UserApi/obj/Debug/net8.0/UserApi.MvcApplicationPartsAssemblyInfo.cache
+/home/vlaeden/newgensims/UserApi/obj/Debug/net8.0/UserApi.sourcelink.json
 /home/vlaeden/newgensims/UserApi/obj/Debug/net8.0/staticwebassets.build.json
 /home/vlaeden/newgensims/UserApi/obj/Debug/net8.0/staticwebassets.development.json
 /home/vlaeden/newgensims/UserApi/obj/Debug/net8.0/staticwebassets/msbuild.UserApi.Microsoft.AspNetCore.StaticWebAssets.props

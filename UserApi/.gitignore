@@ -1,0 +1,7 @@
+# Ignore database files
+*.db
+*.sqlite
+
+# Ignore build directories
+bin/
+obj/

@@ -1,5 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using UserApi.Models;  // Ensure you are importing the correct namespace for your models
 
 namespace UserApi.Controllers
 {
@@ -7,63 +11,70 @@ namespace UserApi.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        // Mocked list of users for demonstration
-        private static List<User> users = new List<User>
+        private readonly UserDbContext _context;
+
+        // Inject UserDbContext into the controller
+        public UserController(UserDbContext context)
         {
-            new User { Id = 1, Name = "John Doe", Email = "john@example.com" },
-            new User { Id = 2, Name = "Jane Smith", Email = "jane@example.com" }
-        };
+            _context = context;
+        }
 
         // GET: api/users
         [HttpGet]
-        public ActionResult<IEnumerable<User>> GetUsers()
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
+            // Get all users from the database
+            var users = await _context.Users.ToListAsync();  // Ensure we get all users from the database
             return Ok(users);
         }
 
         // GET: api/users/{id}
         [HttpGet("{id}")]
-        public ActionResult<User> GetUserById(int id)
+        public async Task<ActionResult<User>> GetUserById(int id)
         {
-            var user = users.Find(u => u.Id == id);
+            // Try to find the user by ID
+            var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
-                return NotFound();
+                return NotFound(); // Return 404 if not found
             }
             return Ok(user);
         }
 
         // POST: api/users
         [HttpPost]
-        public ActionResult<User> PostUser([FromBody] User user)
+        public async Task<ActionResult<User>> PostUser([FromBody] User user)
         {
-            // Add the new user to the list
-            user.Id = users.Count + 1;  // Simple ID generation logic
-            users.Add(user);
+            if (user == null)
+            {
+                return BadRequest(); // Return a 400 Bad Request if the user object is null
+            }
 
+            // Add the new user to the database
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();  // Save the changes to the database
+
+            // Return the newly created user, including the ID, and a 201 status
             return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
         }
 
         // DELETE: api/users/{id}
         [HttpDelete("{id}")]
-        public IActionResult DeleteUser(int id)
+        public async Task<IActionResult> DeleteUser(int id)
         {
-            var user = users.Find(u => u.Id == id);
+            // Try to find the user by ID
+            var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
-                return NotFound(); // If user is not found, return 404
+                return NotFound();  // Return 404 if the user is not found
             }
 
-            users.Remove(user); // Remove the user from the list
-            return NoContent(); // Return 204 No Content to indicate success without response body
-        }
-    }
+            // Remove the user from the database
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
 
-    // User model
-    public class User
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
+            // Return 204 No Content to indicate success
+            return NoContent();
+        }
     }
 }

@@ -3,15 +3,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using UserApi.Data;
+using UserApi.Models;
 
 #nullable disable
 
 namespace UserApi.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241115133138_AddUserModel")]
-    partial class AddUserModel
+    [DbContext(typeof(UserDbContext))]
+    [Migration("20241115202149_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
