@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using YourNamespace.DTOs;
-using YourNamespace.Services;
+using newgensims.DTOs;
+using newgensims.Services;
 
 //Version 0.1
 
-namespace YourNamespace.Controllers
+namespace newgensims.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
