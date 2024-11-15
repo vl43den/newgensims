@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  webapp:
+    build:
+      context: ./WebApp
+    ports:
+      - "5000:80"  # Expose WebApp on port 5000
+    networks:
+      - backend
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=mssql;Database=WebAppDb;User Id=sa;Password=YourStrong@Passw0rd;
+      - Redis__ConnectionString=redis:6379
+    depends_on:
+      - mssql
+      - redis
+
+  api:
+    build:
+      context: ./UserApi
+    ports:
+      - "5001:80"  # Expose API on port 5001
+    networks:
+      - backend
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=mssql;Database=UserApiDb;User Id=sa;Password=YourStrong@Passw0rd;
+      - Redis__ConnectionString=redis:6379
+    depends_on:
+      - mssql
+      - redis
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    networks:
+      - backend
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong@Passw0rd
+    ports:
+      - "1433:1433"  # Expose MSSQL on port 1433
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
