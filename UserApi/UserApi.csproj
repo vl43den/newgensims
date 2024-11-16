@@ -40,6 +40,9 @@
     <Reference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild">
     <HintPath>libs/Microsoft.CodeAnalysis.Workspaces.MSBuild.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Analyzer">
+    <HintPath>libs/Microsoft.CodeAnalysis.Analyzer.dll</HintPath>
+  </Reference>
 </ItemGroup>
 
 </Project>
