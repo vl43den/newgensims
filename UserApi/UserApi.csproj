@@ -23,30 +23,6 @@
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
-    <Reference Include="Microsoft.Build.Locator">
-    <HintPath>libs/Microsoft.Build.Locator.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.CSharp">
-    <HintPath>libs/Microsoft.CodeAnalysis.CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.CSharp.Workspaces">
-    <HintPath>libs/Microsoft.CodeAnalysis.CSharp.Workspaces.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis">
-    <HintPath>libs/Microsoft.CodeAnalysis.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.Workspaces">
-    <HintPath>libs/Microsoft.CodeAnalysis.Workspaces.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost">
-    <HintPath>libs/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild">
-    <HintPath>libs/Microsoft.CodeAnalysis.Workspaces.MSBuild.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.Analyzer">
-    <HintPath>libs/Microsoft.CodeAnalysis.Analyzer.dll</HintPath>
-  </Reference>
 </ItemGroup>
 
 </Project>
