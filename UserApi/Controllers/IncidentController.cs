@@ -1,13 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
+using newgensims.Models;
 using newgensims.Services;
-using newgensims.Models; // Assuming the Incident model is in this namespace
-
-//Version 0.1
 
 namespace newgensims.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class IncidentController : ControllerBase
     {
         private readonly IIncidentService _incidentService;
@@ -17,59 +15,59 @@ namespace newgensims.Controllers
             _incidentService = incidentService;
         }
 
-        // POST: api/Incident
         [HttpPost]
-        public IActionResult CreateIncident(Incident incident)
+        public IActionResult CreateIncident([FromBody] Incident incident)
         {
             var result = _incidentService.CreateIncident(incident);
-            if (!result.Success)
-                return BadRequest(result.Message);
-
-            return Ok(result);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            return BadRequest(result.Message);
         }
 
-        // GET: api/Incident/{id}
         [HttpGet("{id}")]
         public IActionResult GetIncident(int id)
         {
             var incident = _incidentService.GetIncidentById(id);
             if (incident == null)
-                return NotFound();
-
+            {
+                return NotFound("Incident not found.");
+            }
             return Ok(incident);
         }
 
-        // PUT: api/Incident/{id}
         [HttpPut("{id}")]
-        public IActionResult UpdateIncident(int id, Incident incident)
+        public IActionResult UpdateIncident(int id, [FromBody] Incident incident)
         {
             var result = _incidentService.UpdateIncident(id, incident);
-            if (!result.Success)
-                return BadRequest(result.Message);
-
-            return Ok(result);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            return BadRequest(result.Message);
         }
 
-        // DELETE: api/Incident/{id}
         [HttpDelete("{id}")]
         public IActionResult DeleteIncident(int id)
         {
             var result = _incidentService.DeleteIncident(id);
-            if (!result.Success)
-                return BadRequest(result.Message);
-
-            return Ok(result);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            return BadRequest(result.Message);
         }
 
-        // POST: api/Incident/escalate/{id}
-        [HttpPost("escalate/{id}")]
+        [HttpPatch("{id}/escalate")]
         public IActionResult EscalateIncident(int id)
         {
             var result = _incidentService.EscalateIncident(id);
-            if (!result.Success)
-                return BadRequest(result.Message);
-
-            return Ok(result);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            return BadRequest(result.Message);
         }
     }
 }
