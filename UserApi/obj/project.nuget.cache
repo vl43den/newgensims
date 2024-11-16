@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9wVYcBo1F/4hO3QspxdgB7zsZB3EcjkcF9ub98B1NjFU9IgB5DUUyx8vtCqGJcV6szWuaQ/dtW05DoKc7lAVYQ==",
+  "dgSpecHash": "y3knlAwQNHEBHUwMdTLITP6iM7GkBHSQvvYNYB19mYRjWGbj5mG24ZKvGKWzZseq+1fLTXLpDI+2crQv5POnPQ==",
   "success": true,
-  "projectFilePath": "/home/vlaeden/newgensims/UserApi/UserApi.csproj",
+  "projectFilePath": "/home/vlaeden/newgensims (copy)/UserApi/UserApi.csproj",
   "expectedPackageFiles": [
     "/home/vlaeden/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",

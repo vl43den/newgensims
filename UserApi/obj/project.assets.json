@@ -5707,11 +5707,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/vlaeden/newgensims/UserApi/UserApi.csproj",
+      "projectUniqueName": "/home/vlaeden/newgensims (copy)/UserApi/UserApi.csproj",
       "projectName": "UserApi",
-      "projectPath": "/home/vlaeden/newgensims/UserApi/UserApi.csproj",
+      "projectPath": "/home/vlaeden/newgensims (copy)/UserApi/UserApi.csproj",
       "packagesPath": "/home/vlaeden/.nuget/packages/",
-      "outputPath": "/home/vlaeden/newgensims/UserApi/obj/",
+      "outputPath": "/home/vlaeden/newgensims (copy)/UserApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/vlaeden/.nuget/NuGet/NuGet.Config"
