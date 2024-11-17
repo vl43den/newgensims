@@ -1,13 +1,16 @@
 using Microsoft.EntityFrameworkCore;
-using UserApi.Models;
+using newgensims.Models;
+using newgensims.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Use the connection string from appsettings.json
-builder.Services.AddDbContext<UserDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));  // Reference the connection string from appsettings.json
+builder.Services.AddDbContext<IncidentDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add services to the container.
+// Register services in the DI container
+builder.Services.AddScoped<IIncidentService, IncidentService>();
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
