@@ -11,3 +11,9 @@ obj/
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Ignore SQLite database files
+UserApi/users.db
+UserApi/users.db-shm
+UserApi/users.db-wal
+
