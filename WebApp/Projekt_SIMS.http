@@ -1,0 +1,6 @@
+@Projekt_SIMS_HostAddress = http://localhost:5242
+
+GET {{Projekt_SIMS_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
