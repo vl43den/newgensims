@@ -1,9 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using UserApi.Models;  // Ensure you are importing the correct namespace for your models
+using Microsoft.AspNetCore.Identity;
+using UserApi.Models;
+using UserApi.Data;
 
 namespace UserApi.Controllers
 {
@@ -11,70 +9,35 @@ namespace UserApi.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly UserDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly IPasswordHasher<User> _passwordHasher;
 
-        // Inject UserDbContext into the controller
-        public UserController(UserDbContext context)
+        // Constructor to inject ApplicationDbContext and IPasswordHasher
+        public UserController(ApplicationDbContext context, IPasswordHasher<User> passwordHasher)
         {
             _context = context;
+            _passwordHasher = passwordHasher;
         }
 
-        // GET: api/users
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        [HttpPost("register")]
+        public IActionResult Register([FromBody] RegisterRequest model)
         {
-            // Get all users from the database
-            var users = await _context.Users.ToListAsync();  // Ensure we get all users from the database
-            return Ok(users);
-        }
-
-        // GET: api/users/{id}
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUserById(int id)
-        {
-            // Try to find the user by ID
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
+            var user = new User
             {
-                return NotFound(); // Return 404 if not found
-            }
-            return Ok(user);
-        }
+                UserName = model.Username, // Use UserName instead of Username
+                Name = model.Name,
+                Email = model.Email, // Assuming Email is properly initialized
+                IsActive = true,
+                Role = UserRole.User // Default role
+            };
 
-        // POST: api/users
-        [HttpPost]
-        public async Task<ActionResult<User>> PostUser([FromBody] User user)
-        {
-            if (user == null)
-            {
-                return BadRequest(); // Return a 400 Bad Request if the user object is null
-            }
+            // Hash and set the user's password
+            user.SetPassword(model.Password, _passwordHasher);
 
-            // Add the new user to the database
             _context.Users.Add(user);
-            await _context.SaveChangesAsync();  // Save the changes to the database
+            _context.SaveChanges();
 
-            // Return the newly created user, including the ID, and a 201 status
-            return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
-        }
-
-        // DELETE: api/users/{id}
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
-        {
-            // Try to find the user by ID
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();  // Return 404 if the user is not found
-            }
-
-            // Remove the user from the database
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-
-            // Return 204 No Content to indicate success
-            return NoContent();
+            return Ok(new { message = "User registered successfully!" });
         }
     }
 }

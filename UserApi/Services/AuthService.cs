@@ -1,30 +1,32 @@
-using newgensims.Models;
-using Microsoft.EntityFrameworkCore;
 using UserApi.Models;
-using UserApi.Data;
+using Microsoft.AspNetCore.Identity;
 
-namespace newgensims.Services
+namespace UserApi.Services
 {
-
-   public class UserService
-{
-    private readonly ApplicationDbContext _context;
-
-    public UserService(ApplicationDbContext context)
+    public class AuthService
     {
-        _context = context;
+        private readonly UserApi.Data.ApplicationDbContext _context;
+        private readonly IPasswordHasher<User> _passwordHasher;
+
+        public AuthService(UserApi.Data.ApplicationDbContext context, IPasswordHasher<User> passwordHasher)
+        {
+            _context = context;
+            _passwordHasher = passwordHasher;
+        }
+
+        public User? GetUserByUsername(string username)
+        {
+            return _context.Users.FirstOrDefault(u => u.UserName == username);
+        }
+
+        public bool VerifyPassword(User user, string password)
+        {
+            return _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, password) == PasswordVerificationResult.Success;
+        }
+
+        public UserRole ConvertRoleFromString(string roleString)
+        {
+            return Enum.TryParse<UserRole>(roleString, true, out var role) ? role : UserRole.User;  // Default to User if parsing fails
+        }
     }
-
-    public UserApi.Models.User? Authenticate(string username, string password)
-    {
-        var user = _context.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
-        if (user == null) return null;
-
-        // Optionally: Generate a JWT token
-        return user;
-    }
-}
-
-
-
 }

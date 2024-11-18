@@ -1,31 +1,51 @@
 using Microsoft.AspNetCore.Mvc;
-using newgensims.Models;
-using newgensims.Services;
+using Microsoft.AspNetCore.Identity;
+using UserApi.Models;  // Import the RegisterModel here
+using UserApi.Data;
 
-
-namespace newgensims.AuthController
+namespace UserApi.Controllers
 {
-
-    [ApiController]
     [Route("api/[controller]")]
-
-    public class AuthController(IUserService userService) : ControllerBase
+    [ApiController]
+    public class AuthController : ControllerBase
     {
-        private readonly IUserService _userService = userService;  //Replace IUserService with the actual service handling user logic
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+        private readonly ApplicationDbContext _context;
 
-        [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginRequest model)  //and LoginRequest should represent the payload (e.g., { Username, Password }).
+        public AuthController(UserManager<User> userManager, SignInManager<User> signInManager, ApplicationDbContext context)
         {
-            var user = _userService.Authenticate(model.Username, model.Password);
-            if (user == null)
-                return Unauthorized(new { message = "Invalid credentials" });
-
-            return Ok(user);
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _context = context;
         }
-    }
 
-    public interface IUserService
-    {
-        object Authenticate(string username, string password);
+        // Example action for registering a new user
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        {
+            // Check if passwords match
+            if (model.Password != model.ConfirmPassword)
+            {
+                return BadRequest("Passwords do not match.");
+            }
+
+            var user = new User
+            {
+                UserName = model.Email,
+                Email = model.Email
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                return Ok(new { message = "User registered successfully." });
+            }
+
+            return BadRequest(result.Errors);
+        }
+
+        // Add other actions like Login, etc.
     }
 }
