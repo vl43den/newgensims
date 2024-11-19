@@ -7,7 +7,7 @@ namespace UserApi.Models
         // Remove the custom Password property, as IdentityUser already has PasswordHash
         // public string Password { get; set; } 
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public string? Email { get; set; }
         public UserRole Role { get; set; }  // UserRole is an enum
 

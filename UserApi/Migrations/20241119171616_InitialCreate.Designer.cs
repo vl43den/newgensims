@@ -11,7 +11,7 @@ using UserApi.Data;
 namespace UserApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241118225845_InitialCreate")]
+    [Migration("20241119171616_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -177,7 +177,6 @@ namespace UserApi.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NormalizedEmail")

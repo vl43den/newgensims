@@ -12,10 +12,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Register Identity services
-builder.Services.AddIdentity<User, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders(); // This registers the IPasswordHasher<User> service
+// Register Identity services with updated UserName restrictions
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+    // Relax username rules to allow email format
+    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+})
+.AddEntityFrameworkStores<ApplicationDbContext>()
+.AddDefaultTokenProviders(); // This registers the IPasswordHasher<User> service
 
 // Add the Swagger generator
 builder.Services.AddSwaggerGen(); // Add this line to register Swagger generator
