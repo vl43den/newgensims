@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/vlaeden/newgensims/WebApp/Projekt_SIMS.csproj": {}
+    "/Users/patrickdiem/newgensims/WebApp/Projekt_SIMS.csproj": {}
   },
   "projects": {
-    "/home/vlaeden/newgensims/WebApp/Projekt_SIMS.csproj": {
+    "/Users/patrickdiem/newgensims/WebApp/Projekt_SIMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/vlaeden/newgensims/WebApp/Projekt_SIMS.csproj",
+        "projectUniqueName": "/Users/patrickdiem/newgensims/WebApp/Projekt_SIMS.csproj",
         "projectName": "Projekt_SIMS",
-        "projectPath": "/home/vlaeden/newgensims/WebApp/Projekt_SIMS.csproj",
-        "packagesPath": "/home/vlaeden/.nuget/packages/",
-        "outputPath": "/home/vlaeden/newgensims/WebApp/obj/",
+        "projectPath": "/Users/patrickdiem/newgensims/WebApp/Projekt_SIMS.csproj",
+        "packagesPath": "/Users/patrickdiem/.nuget/packages/",
+        "outputPath": "/Users/patrickdiem/newgensims/WebApp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/vlaeden/.nuget/NuGet/NuGet.Config"
+          "/Users/patrickdiem/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,12 +32,29 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
@@ -62,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

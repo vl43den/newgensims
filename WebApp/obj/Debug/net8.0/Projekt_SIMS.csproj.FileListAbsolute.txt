@@ -31,3 +31,14 @@
 /home/vlaeden/newgensims/WebApp/obj/Debug/net8.0/Projekt_SIMS.pdb
 /home/vlaeden/newgensims/WebApp/obj/Debug/net8.0/Projekt_SIMS.genruntimeconfig.cache
 /home/vlaeden/newgensims/WebApp/obj/Debug/net8.0/ref/Projekt_SIMS.dll
+/Users/patrickdiem/newgensims/WebApp/obj/Debug/net8.0/Projekt_SIMS.csproj.AssemblyReference.cache
+/Users/patrickdiem/newgensims/WebApp/obj/Debug/net8.0/Projekt_SIMS.GeneratedMSBuildEditorConfig.editorconfig
+/Users/patrickdiem/newgensims/WebApp/obj/Debug/net8.0/Projekt_SIMS.AssemblyInfoInputs.cache
+/Users/patrickdiem/newgensims/WebApp/obj/Debug/net8.0/Projekt_SIMS.AssemblyInfo.cs
+/Users/patrickdiem/newgensims/WebApp/obj/Debug/net8.0/Projekt_SIMS.csproj.CoreCompileInputs.cache
+/Users/patrickdiem/newgensims/WebApp/obj/Debug/net8.0/Projekt_SIMS.MvcApplicationPartsAssemblyInfo.cs
+/Users/patrickdiem/newgensims/WebApp/obj/Debug/net8.0/Projekt_SIMS.MvcApplicationPartsAssemblyInfo.cache
+/Users/patrickdiem/newgensims/WebApp/obj/Debug/net8.0/Projekt_SIMS.sourcelink.json
+/Users/patrickdiem/newgensims/WebApp/obj/Debug/net8.0/Projekt_SIMS.dll
+/Users/patrickdiem/newgensims/WebApp/obj/Debug/net8.0/refint/Projekt_SIMS.dll
+/Users/patrickdiem/newgensims/WebApp/obj/Debug/net8.0/Projekt_SIMS.pdb

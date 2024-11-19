@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Projekt_SIMS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4afaff69000ca75080c01eb87a4219f44ee2ee96")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4b0e47b33271836cac5dfa030a5dfd6dfe28a5a6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Projekt_SIMS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Projekt_SIMS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

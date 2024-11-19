@@ -1,11 +1,58 @@
 {
   "Version": 1,
-  "Hash": "Mha9rv/vCbBShJilWy+aE0pdwk/idYeAwJycYcfi4Uk=",
-  "Source": "Projekt_SIMS",
-  "BasePath": "_content/Projekt_SIMS",
+  "Hash": "FoZlL16OQbwEgBjuDO35Gd/uob3KMruMgzmP5WhWmMw=",
+  "Source": "WebApp",
+  "BasePath": "_content/WebApp",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebApp/wwwroot",
+      "Source": "WebApp",
+      "ContentRoot": "/Users/patrickdiem/newgensims/WebApp/wwwroot/",
+      "BasePath": "_content/WebApp",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/Users/patrickdiem/newgensims/WebApp/wwwroot/index.html",
+      "SourceId": "WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/patrickdiem/newgensims/WebApp/wwwroot/",
+      "BasePath": "_content/WebApp",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/index.html"
+    },
+    {
+      "Identity": "/Users/patrickdiem/newgensims/WebApp/wwwroot/register.js",
+      "SourceId": "WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/patrickdiem/newgensims/WebApp/wwwroot/",
+      "BasePath": "_content/WebApp",
+      "RelativePath": "register.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/register.js"
+    }
+  ]
 }
