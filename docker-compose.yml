@@ -1,21 +1,6 @@
 version: '3.8'
 
 services:
-  webapp:
-    build:
-      context: ./WebApp
-    ports:
-      - "5000:80"  # Expose WebApp on port 5000
-    networks:
-      - backend
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=mssql;Database=WebAppDb;User Id=sa;Password=YourStrong@Passw0rd;
-      - Redis__ConnectionString=redis:6379
-    depends_on:
-      - mssql
-      - redis
-
   api:
     build:
       context: ./UserApi
@@ -51,3 +36,4 @@ services:
 networks:
   backend:
     driver: bridge
+

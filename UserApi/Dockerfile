@@ -1,15 +1,15 @@
 # Use the official .NET SDK image to build the app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src/UserApi
 
-WORKDIR /src
+# Copy the project file and restore dependencies
+COPY UserApi.csproj .
+RUN dotnet restore "UserApi.csproj"
 
-# Copy the project files and restore the dependencies
-COPY ["UserApi/UserApi.csproj", "UserApi/"]
-RUN dotnet restore "UserApi/UserApi.csproj"
-
-# Publish the app to the /app directory in the container
+# Copy the rest of the source code
 COPY . .
-WORKDIR "/src/UserApi"
+
+# Publish the app 
 RUN dotnet publish "UserApi.csproj" -c Release -o /app/publish
 
 # Use the official .NET runtime image to run the app
@@ -19,5 +19,4 @@ EXPOSE 80
 
 # Copy the published app from the build container
 COPY --from=build /app/publish .
-
 ENTRYPOINT ["dotnet", "UserApi.dll"]
