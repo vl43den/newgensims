@@ -1,32 +1,43 @@
-using UserApi.Models;
 using Microsoft.AspNetCore.Identity;
+using UserApi.Models;
 
 namespace UserApi.Services
 {
-    public class AuthService
+    public class AuthService : IUserService
     {
         private readonly UserApi.Data.ApplicationDbContext _context;
-        private readonly IPasswordHasher<User> _passwordHasher;
+        private readonly UserManager<User> _userManager;
 
-        public AuthService(UserApi.Data.ApplicationDbContext context, IPasswordHasher<User> passwordHasher)
+        public AuthService(UserApi.Data.ApplicationDbContext context, UserManager<User> userManager)
         {
             _context = context;
-            _passwordHasher = passwordHasher;
+            _userManager = userManager;
         }
 
-        public User? GetUserByUsername(string username)
+        public async Task<User?> AuthenticateAsync(string email, string password)
         {
-            return _context.Users.FirstOrDefault(u => u.UserName == username);
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null) return null;
+
+            var passwordValid = await _userManager.CheckPasswordAsync(user, password);
+            return passwordValid ? user : null;
         }
 
-        public bool VerifyPassword(User user, string password)
+        public Task<User> GetUserByIdAsync(string id)
         {
-            return _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, password) == PasswordVerificationResult.Success;
+            return _context.Users.FindAsync(id).AsTask();
         }
 
-        public UserRole ConvertRoleFromString(string roleString)
+        public async Task<bool> CreateUserAsync(User user, string password)
         {
-            return Enum.TryParse<UserRole>(roleString, true, out var role) ? role : UserRole.User;  // Default to User if parsing fails
+            var result = await _userManager.CreateAsync(user, password);
+            return result.Succeeded;
+        }
+
+        public async Task<bool> ValidateUserCredentialsAsync(string email, string password)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            return user != null && await _userManager.CheckPasswordAsync(user, password);
         }
     }
 }

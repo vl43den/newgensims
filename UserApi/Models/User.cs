@@ -4,7 +4,6 @@ namespace UserApi.Models
 {
     public class User : IdentityUser
     {
-        public new string Email { get; set; } = string.Empty; // Using 'new' keyword to hide inherited member
         public string Name { get; set; } = string.Empty;
         public UserRole Role { get; set; } = UserRole.User;
         public bool IsActive { get; set; } = true;

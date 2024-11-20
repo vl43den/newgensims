@@ -1,6 +1,5 @@
 using UserApi.Models;
 using Microsoft.AspNetCore.Identity;
-using System.Threading.Tasks;
 
 namespace UserApi.Services
 {
@@ -13,9 +12,18 @@ namespace UserApi.Services
             _userManager = userManager;
         }
 
-        public async Task<User> GetUserByIdAsync(string id)
+        public async Task<User?> AuthenticateAsync(string email, string password)
         {
-            return await _userManager.FindByIdAsync(id);
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null) return null;
+
+            var passwordValid = await _userManager.CheckPasswordAsync(user, password);
+            return passwordValid ? user : null;
+        }
+
+        public Task<User> GetUserByIdAsync(string id)
+        {
+            return _userManager.FindByIdAsync(id);
         }
 
         public async Task<bool> CreateUserAsync(User user, string password)
@@ -27,20 +35,7 @@ namespace UserApi.Services
         public async Task<bool> ValidateUserCredentialsAsync(string email, string password)
         {
             var user = await _userManager.FindByEmailAsync(email);
-            if (user == null) return false;
-            
-            var result = await _userManager.CheckPasswordAsync(user, password);
-            return result;
-        }
-
-        public async Task<User> Authenticate(string email, string password) // Implement this method
-        {
-            var user = await _userManager.FindByEmailAsync(email);
-            if (user != null && await ValidateUserCredentialsAsync(email, password))
-            {
-                return user;
-            }
-            return null;
+            return user != null && await _userManager.CheckPasswordAsync(user, password);
         }
     }
 }
