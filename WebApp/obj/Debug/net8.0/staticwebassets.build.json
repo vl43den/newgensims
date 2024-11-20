@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XSNEXNls0UZjmxUFYHbajbMvJvk3Te7d2oLIes8zo0M=",
+  "Hash": "t3+S8FP+tvsLbVGemaeYnYOtBKEIKu6LH6u5qsQHqnw=",
   "Source": "WebApp",
   "BasePath": "_content/WebApp",
   "Mode": "Default",
@@ -16,6 +16,44 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "/home/vlaeden/newgensims/WebApp/wwwroot/add-incident.html",
+      "SourceId": "WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/vlaeden/newgensims/WebApp/wwwroot/",
+      "BasePath": "_content/WebApp",
+      "RelativePath": "add-incident.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/add-incident.html"
+    },
+    {
+      "Identity": "/home/vlaeden/newgensims/WebApp/wwwroot/add-incident.js",
+      "SourceId": "WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/vlaeden/newgensims/WebApp/wwwroot/",
+      "BasePath": "_content/WebApp",
+      "RelativePath": "add-incident.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/add-incident.js"
+    },
     {
       "Identity": "/home/vlaeden/newgensims/WebApp/wwwroot/index.html",
       "SourceId": "WebApp",
@@ -36,12 +74,12 @@
       "OriginalItemSpec": "wwwroot/index.html"
     },
     {
-      "Identity": "/home/vlaeden/newgensims/WebApp/wwwroot/register.js",
+      "Identity": "/home/vlaeden/newgensims/WebApp/wwwroot/script.js",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
       "ContentRoot": "/home/vlaeden/newgensims/WebApp/wwwroot/",
       "BasePath": "_content/WebApp",
-      "RelativePath": "register.js",
+      "RelativePath": "script.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -52,7 +90,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/register.js"
+      "OriginalItemSpec": "wwwroot/script.js"
     },
     {
       "Identity": "/home/vlaeden/newgensims/WebApp/wwwroot/styles.css",

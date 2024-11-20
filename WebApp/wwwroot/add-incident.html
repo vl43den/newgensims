@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Incident</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="add-incident.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Incident</h1>
+        <form id="incidentForm">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" required>
+            </div>
+            <div class="form-group">
+                <label for="severity">Severity:</label>
+                <input type="text" id="severity" name="severity" required>
+            </div>
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <input type="text" id="status" name="status" required>
+            </div>
+            <div class="form-group">
+                <label for="assignedUser">Assigned User:</label>
+                <input type="text" id="assignedUser" name="assignedUser" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="formMessages"></div>
+    </div>
+</body>
+</html>

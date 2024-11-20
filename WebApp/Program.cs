@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Data;
 using WebApp.Models;
+using WebApp.Services; // Add this line to include the service
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,9 @@ builder.Services.AddCors(options =>
                .AllowAnyHeader();
     });
 });
+
+// Register HttpClient and UserApiService
+builder.Services.AddHttpClient<UserApiService>(); // Add this line
 
 var app = builder.Build();
 

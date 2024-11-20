@@ -3,32 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Registration</title>
+    <title>User Registration/Login</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="register.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
-        <h1>Register User</h1>
-        <form id="registerForm">
+        <h1 id="formTitle">Register</h1>
+        <form id="userForm">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="nameGroup">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
             </div>
-            <div class="form-group">
+            <div class="form-group" id="emailGroup">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
-            <button type="submit">Register</button>
+            <button type="submit">Submit</button>
         </form>
+        <button id="toggleForm">Switch to Login</button>
+        <div id="formMessages"></div>
     </div>
 </body>
 </html>
