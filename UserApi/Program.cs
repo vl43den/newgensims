@@ -46,6 +46,17 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
+// Add CORS configuration
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()       // Erlaubt Anfragen von allen Domains
+               .AllowAnyMethod()       // Erlaubt alle HTTP-Methoden (GET, POST, OPTIONS, usw.)
+               .AllowAnyHeader();      // Erlaubt alle Header
+    });
+});
+
 // Add controllers to the services collection (required for handling HTTP requests)
 builder.Services.AddControllers();  // Ensure this line is included
 
@@ -100,7 +111,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();  // Enable Swagger UI for interactive API docs
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+
+// Use CORS Middleware
+app.UseCors("AllowAll");
 
 // Add Authentication & Authorization middleware
 app.UseAuthentication();

@@ -18,7 +18,6 @@ namespace WebApp.Controllers
             _context = context;
             _passwordHasher = passwordHasher;
         }
-
         /// <summary>
         /// Registers a new user.
         /// </summary>

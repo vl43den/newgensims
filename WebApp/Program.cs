@@ -15,12 +15,20 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseInMemoryDatabase("UserDb")); // Für Tests: InMemoryDatabase
 
 // Add Identity
-builder.Services.AddIdentity<User, IdentityRole>() // Identity mit User und Rollen
-    .AddEntityFrameworkStores<ApplicationDbContext>() // Verbindung zur Datenbank herstellen
-    .AddDefaultTokenProviders(); // Token (z. B. für Passwort-Reset)
+builder.Services.AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
 
-// Optional: PasswordHasher für manuelles Hashing
-builder.Services.AddSingleton<IPasswordHasher<User>, PasswordHasher<User>>();
+// Add CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
@@ -31,12 +39,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-app.UseDefaultFiles(); // Aktiviert Default-Dateien wie index.html
-app.UseStaticFiles();  // Aktiviert die Bereitstellung statischer Dateien
+//app.UseHttpsRedirection();
+app.UseDefaultFiles();
+app.UseStaticFiles();
+app.UseCors("AllowAll"); // CORS Middleware aktivieren
 app.UseAuthorization();
 app.MapControllers();
-
-
 
 app.Run();
