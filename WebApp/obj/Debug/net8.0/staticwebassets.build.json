@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FoZlL16OQbwEgBjuDO35Gd/uob3KMruMgzmP5WhWmMw=",
+  "Hash": "XSNEXNls0UZjmxUFYHbajbMvJvk3Te7d2oLIes8zo0M=",
   "Source": "WebApp",
   "BasePath": "_content/WebApp",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "WebApp/wwwroot",
       "Source": "WebApp",
-      "ContentRoot": "/Users/patrickdiem/newgensims/WebApp/wwwroot/",
+      "ContentRoot": "/home/vlaeden/newgensims/WebApp/wwwroot/",
       "BasePath": "_content/WebApp",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "/Users/patrickdiem/newgensims/WebApp/wwwroot/index.html",
+      "Identity": "/home/vlaeden/newgensims/WebApp/wwwroot/index.html",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/patrickdiem/newgensims/WebApp/wwwroot/",
+      "ContentRoot": "/home/vlaeden/newgensims/WebApp/wwwroot/",
       "BasePath": "_content/WebApp",
       "RelativePath": "index.html",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot/index.html"
     },
     {
-      "Identity": "/Users/patrickdiem/newgensims/WebApp/wwwroot/register.js",
+      "Identity": "/home/vlaeden/newgensims/WebApp/wwwroot/register.js",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/patrickdiem/newgensims/WebApp/wwwroot/",
+      "ContentRoot": "/home/vlaeden/newgensims/WebApp/wwwroot/",
       "BasePath": "_content/WebApp",
       "RelativePath": "register.js",
       "AssetKind": "All",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/register.js"
+    },
+    {
+      "Identity": "/home/vlaeden/newgensims/WebApp/wwwroot/styles.css",
+      "SourceId": "WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/vlaeden/newgensims/WebApp/wwwroot/",
+      "BasePath": "_content/WebApp",
+      "RelativePath": "styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/styles.css"
     }
   ]
 }

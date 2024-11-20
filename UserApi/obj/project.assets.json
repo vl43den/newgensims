@@ -5648,19 +5648,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/patrickdiem/.nuget/packages/": {}
+    "/home/vlaeden/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/patrickdiem/newgensims/UserApi/UserApi.csproj",
+      "projectUniqueName": "/home/vlaeden/newgensims/UserApi/UserApi.csproj",
       "projectName": "UserApi",
-      "projectPath": "/Users/patrickdiem/newgensims/UserApi/UserApi.csproj",
-      "packagesPath": "/Users/patrickdiem/.nuget/packages/",
-      "outputPath": "/Users/patrickdiem/newgensims/UserApi/obj/",
+      "projectPath": "/home/vlaeden/newgensims/UserApi/UserApi.csproj",
+      "packagesPath": "/home/vlaeden/.nuget/packages/",
+      "outputPath": "/home/vlaeden/newgensims/UserApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/patrickdiem/.nuget/NuGet/NuGet.Config"
+        "/home/vlaeden/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -5678,11 +5678,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -5767,7 +5762,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
