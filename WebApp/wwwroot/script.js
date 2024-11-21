@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = isLogin ? null : document.getElementById('email').value;
 
         const url = isLogin
-            ? 'http://localhost:5242/api/user/login'
+            ? 'http://localhost:5242/api/auth/login' // Updated URL
             : 'http://localhost:5242/api/user/register';
 
         const requestData = isLogin

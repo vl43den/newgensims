@@ -14,13 +14,13 @@ builder.Services.AddDbContext<IncidentDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("IncidentConnection")));
 
 // Register Identity services
-builder.Services.AddIdentity<User, IdentityRole>() // Fully qualify User class here
+builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
 // Register application services
 builder.Services.AddScoped<IUserService, AuthService>();
-builder.Services.AddScoped<IIncidentService, IncidentService>(); // Add this line
+builder.Services.AddScoped<IIncidentService, IncidentService>(); 
 
 // Add Swagger generator
 builder.Services.AddSwaggerGen();
@@ -38,6 +38,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Add authentication and authorization middleware
 app.UseAuthentication();
 app.UseAuthorization();
 
