@@ -2,7 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Data;
 using WebApp.Models;
-using WebApp.Services; // Add this line to include the service
+using WebApp.Services;
+using Microsoft.Extensions.Caching.Distributed;  // Add Redis using this namespace
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,9 +12,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add DbContext
+// Add DbContext for MSSQL
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseInMemoryDatabase("UserDb")); // Für Tests: InMemoryDatabase
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); // Use MSSQL
 
 // Add Identity
 builder.Services.AddIdentity<User, IdentityRole>()
@@ -32,7 +33,14 @@ builder.Services.AddCors(options =>
 });
 
 // Register HttpClient and UserApiService
-builder.Services.AddHttpClient<UserApiService>(); // Add this line
+builder.Services.AddHttpClient<UserApiService>();
+
+// Add Redis Cache
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("RedisConnection");
+    options.InstanceName = "WebAppSession:";
+});
 
 var app = builder.Build();
 
@@ -46,7 +54,7 @@ if (app.Environment.IsDevelopment())
 //app.UseHttpsRedirection();
 app.UseDefaultFiles();
 app.UseStaticFiles();
-app.UseCors("AllowAll"); // CORS Middleware aktivieren
+app.UseCors("AllowAll"); // CORS Middleware
 app.UseAuthorization();
 app.MapControllers();
 

@@ -3,15 +3,16 @@ using Microsoft.EntityFrameworkCore;
 using UserApi.Models;
 using UserApi.Services;
 using UserApi.Data;
+using Microsoft.Extensions.Caching.Distributed;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure SQLite Contexts
+// Configure MSSQL Contexts
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddDbContext<IncidentDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("IncidentConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("IncidentConnection")));
 
 // Register Identity services
 builder.Services.AddIdentity<User, IdentityRole>()
@@ -20,10 +21,17 @@ builder.Services.AddIdentity<User, IdentityRole>()
 
 // Register application services
 builder.Services.AddScoped<IUserService, AuthService>();
-builder.Services.AddScoped<IIncidentService, IncidentService>(); 
+builder.Services.AddScoped<IIncidentService, IncidentService>();
 
 // Add Swagger generator
 builder.Services.AddSwaggerGen();
+
+// Add Redis Cache
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("RedisConnection");
+    options.InstanceName = "UserApiSession:";
+});
 
 builder.Services.AddControllers();
 

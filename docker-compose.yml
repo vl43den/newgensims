@@ -3,9 +3,10 @@ version: '3.8'
 services:
   api:
     build:
-      context: ./UserApi
+      context: .
+      dockerfile: UserApi/Dockerfile
     ports:
-      - "5001:80"  # Expose API on port 5001
+      - "5001:80"
     networks:
       - backend
     environment:
@@ -29,11 +30,21 @@ services:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=YourStrong@Passw0rd
     ports:
-      - "1433:1433"  # Expose MSSQL on port 1433
+      - "1433:1433"
     networks:
       - backend
+
+  webapp:
+    build:
+      context: ./WebApp
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"  # Or whatever port you want for the web application
+    networks:
+      - backend
+    depends_on:
+      - api
 
 networks:
   backend:
     driver: bridge
-
