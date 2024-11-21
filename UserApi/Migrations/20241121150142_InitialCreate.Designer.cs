@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using UserApi.Data;
+using UserApi.Models;
 
 #nullable disable
 
 namespace UserApi.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241120222105_InitialCreate")]
+    [DbContext(typeof(UserDbContext))]
+    [Migration("20241121150142_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

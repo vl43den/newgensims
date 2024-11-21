@@ -1,6 +1,6 @@
-using newgensims.Models;
+using UserApi.Models;
 
-namespace newgensims.Services
+namespace UserApi.Services
 {
     public interface IIncidentService
     {

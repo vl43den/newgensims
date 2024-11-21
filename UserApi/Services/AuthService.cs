@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 using UserApi.Models;
 
 namespace UserApi.Services
@@ -7,19 +8,30 @@ namespace UserApi.Services
     {
         private readonly UserApi.Data.ApplicationDbContext _context;
         private readonly UserManager<User> _userManager;
+        private readonly ILogger<AuthService> _logger;
 
-        public AuthService(UserApi.Data.ApplicationDbContext context, UserManager<User> userManager)
+        public AuthService(UserApi.Data.ApplicationDbContext context, UserManager<User> userManager, ILogger<AuthService> logger)
         {
             _context = context;
             _userManager = userManager;
+            _logger = logger;
         }
 
         public async Task<User?> AuthenticateAsync(string email, string password)
         {
             var user = await _userManager.FindByEmailAsync(email);
-            if (user == null) return null;
+            if (user == null)
+            {
+                _logger.LogWarning("User not found: {Email}", email);
+                return null;
+            }
 
             var passwordValid = await _userManager.CheckPasswordAsync(user, password);
+            if (!passwordValid)
+            {
+                _logger.LogWarning("Invalid password for user: {Email}", email);
+            }
+
             return passwordValid ? user : null;
         }
 

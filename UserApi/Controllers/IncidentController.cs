@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using newgensims.Models;
-using newgensims.Services;
+using UserApi.Models;
+using UserApi.Services;
 
 namespace newgensims.Controllers
 {

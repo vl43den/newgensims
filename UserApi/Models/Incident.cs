@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace newgensims.Models
+namespace UserApi.Models
 {
     public class Incident
     {

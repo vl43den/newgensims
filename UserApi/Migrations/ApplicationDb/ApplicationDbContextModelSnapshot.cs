@@ -7,7 +7,7 @@ using UserApi.Data;
 
 #nullable disable
 
-namespace UserApi.Migrations
+namespace UserApi.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot

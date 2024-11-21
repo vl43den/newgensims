@@ -1,8 +1,10 @@
-using newgensims.Models;
+
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using UserApi.Data;
+using UserApi.Models;
 
-namespace newgensims.Services
+namespace UserApi.Services
 {
     public class IncidentService : IIncidentService
     {
