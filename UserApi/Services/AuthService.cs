@@ -17,39 +17,86 @@ namespace UserApi.Services
             _logger = logger;
         }
 
+        // Consolidated authentication logic
         public async Task<User?> AuthenticateAsync(string email, string password)
         {
-            var user = await _userManager.FindByEmailAsync(email);
-            if (user == null)
+            try
             {
-                _logger.LogWarning("User not found: {Email}", email);
+                var user = await _userManager.FindByEmailAsync(email);
+                if (user == null)
+                {
+                    _logger.LogWarning("User not found: {Email}", email);
+                    return null;
+                }
+
+                var passwordValid = await _userManager.CheckPasswordAsync(user, password);
+                if (!passwordValid)
+                {
+                    _logger.LogWarning("Invalid password for user: {Email}", email);
+                    return null;
+                }
+
+                return user;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred during authentication for email: {Email}", email);
                 return null;
             }
-
-            var passwordValid = await _userManager.CheckPasswordAsync(user, password);
-            if (!passwordValid)
-            {
-                _logger.LogWarning("Invalid password for user: {Email}", email);
-            }
-
-            return passwordValid ? user : null;
         }
 
-        public Task<User> GetUserByIdAsync(string id)
+        // Get user by Id with null check
+        public async Task<User?> GetUserByIdAsync(string id)
         {
-            return _context.Users.FindAsync(id).AsTask();
+            try
+            {
+                return await _context.Users.FindAsync(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while fetching user by ID: {Id}", id);
+                return null;
+            }
         }
 
+        // Create user with better logging for errors
         public async Task<bool> CreateUserAsync(User user, string password)
         {
-            var result = await _userManager.CreateAsync(user, password);
-            return result.Succeeded;
+            try
+            {
+                var result = await _userManager.CreateAsync(user, password);
+                if (!result.Succeeded)
+                {
+                    _logger.LogWarning("Failed to create user: {UserName}. Errors: {Errors}",
+                        user.UserName, string.Join(", ", result.Errors.Select(e => e.Description)));
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while creating user: {UserName}", user.UserName);
+                return false;
+            }
         }
 
+        // Validating user credentials (for login or other purposes)
         public async Task<bool> ValidateUserCredentialsAsync(string email, string password)
         {
-            var user = await _userManager.FindByEmailAsync(email);
-            return user != null && await _userManager.CheckPasswordAsync(user, password);
+            try
+            {
+                var user = await _userManager.FindByEmailAsync(email);
+                if (user == null)
+                {
+                    return false;
+                }
+                return await _userManager.CheckPasswordAsync(user, password);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while validating credentials for email: {Email}", email);
+                return false;
+            }
         }
     }
 }
