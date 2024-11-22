@@ -18,6 +18,11 @@ services:
         condition: service_healthy  # Wait for mssql to be healthy before starting userapi
       redis: 
         condition: service_started  # Ensure Redis starts as well
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]  # Add your health check URL here
+      interval: 30s
+      retries: 3
+      start_period: 10s
     networks:
       - backend
 
@@ -34,7 +39,9 @@ services:
       - backend
 
   mssql:
-    image: mcr.microsoft.com/mssql/server:2022-latest
+    build:
+      context: .  # Path to the directory containing the Dockerfile.mssql
+      dockerfile: Dockerfile.mssql  # Path to the custom Dockerfile for mssql
     container_name: mssql
     environment:
       - ACCEPT_EULA=Y

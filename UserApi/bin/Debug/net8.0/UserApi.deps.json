@@ -8,6 +8,8 @@
     ".NETCoreApp,Version=v8.0": {
       "UserApi/1.0.0": {
         "dependencies": {
+          "AspNetCore.HealthChecks.Redis": "6.0.0",
+          "AspNetCore.HealthChecks.SqlServer": "6.0.0",
           "BCrypt.Net-Next": "4.0.3",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.0",
@@ -25,6 +27,30 @@
         },
         "runtime": {
           "UserApi.dll": {}
+        }
+      },
+      "AspNetCore.HealthChecks.Redis/6.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.0",
+          "StackExchange.Redis": "2.6.122"
+        },
+        "runtime": {
+          "lib/net6.0/HealthChecks.Redis.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.0.0"
+          }
+        }
+      },
+      "AspNetCore.HealthChecks.SqlServer/6.0.0": {
+        "dependencies": {
+          "Microsoft.Data.SqlClient": "5.1.6",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/HealthChecks.SqlServer.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.0.0"
+          }
         }
       },
       "Azure.Core/1.38.0": {
@@ -679,6 +705,27 @@
             "assemblyVersion": "9.0.0.0",
             "fileVersion": "9.0.24.52809"
           }
+        }
+      },
+      "Microsoft.Extensions.Diagnostics.HealthChecks/6.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "6.0.0",
+          "Microsoft.Extensions.Hosting.Abstractions": "6.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.0",
+          "Microsoft.Extensions.Options": "9.0.0"
+        }
+      },
+      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/6.0.0": {},
+      "Microsoft.Extensions.FileProviders.Abstractions/6.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "9.0.0"
+        }
+      },
+      "Microsoft.Extensions.Hosting.Abstractions/6.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.0",
+          "Microsoft.Extensions.FileProviders.Abstractions": "6.0.0"
         }
       },
       "Microsoft.Extensions.Identity.Core/8.0.0": {
@@ -1373,6 +1420,20 @@
       "serviceable": false,
       "sha512": ""
     },
+    "AspNetCore.HealthChecks.Redis/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4+2cfygsRMHBXG1FCZmEjXQYWpxLYNyovpEVfzE4+yX3WPkFUfIUOYRgbI1I/UT0O8GPy0R9J+uFTLLnCtWDcg==",
+      "path": "aspnetcore.healthchecks.redis/6.0.0",
+      "hashPath": "aspnetcore.healthchecks.redis.6.0.0.nupkg.sha512"
+    },
+    "AspNetCore.HealthChecks.SqlServer/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2bCvetQwhK5l+b1FfqJTrB62oBVLIMpKvvE9j5j1d4fJfnBpV14ahm4jei+65tTK74uRrkwPUggRCIn1pHLglw==",
+      "path": "aspnetcore.healthchecks.sqlserver/6.0.0",
+      "hashPath": "aspnetcore.healthchecks.sqlserver.6.0.0.nupkg.sha512"
+    },
     "Azure.Core/1.38.0": {
       "type": "package",
       "serviceable": true,
@@ -1638,6 +1699,34 @@
       "sha512": "sha512-saxr2XzwgDU77LaQfYFXmddEDRUKHF4DaGMZkNB3qjdVSZlax3//dGJagJkKrGMIPNZs2jVFXITyCCR6UHJNdA==",
       "path": "microsoft.extensions.dependencymodel/9.0.0",
       "hashPath": "microsoft.extensions.dependencymodel.9.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Diagnostics.HealthChecks/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ktOGFY2uJ6QqZbLgLZgYg6qWuOnwKEIYbpgGDR/1QY8E+8NhnL75dJZ+WDl88h7Q4JkIFeTkFBUGF5QmNcfUEg==",
+      "path": "microsoft.extensions.diagnostics.healthchecks/6.0.0",
+      "hashPath": "microsoft.extensions.diagnostics.healthchecks.6.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6C9uhsA7GwT1qlXF+1JgOktilrWBSMLNVcwIjg63UvFaDVizg8fYTv826MC58dznvvT9yG31gGwsN1cFfg+yZQ==",
+      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/6.0.0",
+      "hashPath": "microsoft.extensions.diagnostics.healthchecks.abstractions.6.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0pd4/fho0gC12rQswaGQxbU34jOS1TPS8lZPpkFCH68ppQjHNHYle9iRuHeev1LhrJ94YPvzcRd8UmIuFk23Qw==",
+      "path": "microsoft.extensions.fileproviders.abstractions/6.0.0",
+      "hashPath": "microsoft.extensions.fileproviders.abstractions.6.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Hosting.Abstractions/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GcT5l2CYXL6Sa27KCSh0TixsRfADUgth+ojQSD5EkzisZxmGFh7CwzkcYuGwvmXLjr27uWRNrJ2vuuEjMhU05Q==",
+      "path": "microsoft.extensions.hosting.abstractions/6.0.0",
+      "hashPath": "microsoft.extensions.hosting.abstractions.6.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Identity.Core/8.0.0": {
       "type": "package",

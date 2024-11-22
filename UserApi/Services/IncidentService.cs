@@ -22,7 +22,7 @@ namespace UserApi.Services
             return (true, "Incident created successfully.");
         }
 
-        public Incident GetIncidentById(int id)
+        public Incident? GetIncidentById(int id)
         {
             return _context.Incidents.FirstOrDefault(i => i.Id == id); // Fetch incident by ID
         }

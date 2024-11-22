@@ -604,3 +604,5 @@
 /home/vlaeden/newgensims/UserApi/obj/Debug/net8.0/UserApi.pdb
 /home/vlaeden/newgensims/UserApi/obj/Debug/net8.0/UserApi.genruntimeconfig.cache
 /home/vlaeden/newgensims/UserApi/obj/Debug/net8.0/ref/UserApi.dll
+/home/vlaeden/newgensims/UserApi/bin/Debug/net8.0/HealthChecks.Redis.dll
+/home/vlaeden/newgensims/UserApi/bin/Debug/net8.0/HealthChecks.SqlServer.dll

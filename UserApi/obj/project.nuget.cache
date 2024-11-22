@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "5VSRw/+9gDhzGhl00jnsJCm7zhhSzFuTfXjN9QPeJivJxJ/DsV+4Cqgn9hJIMe4cX9OWruUYYzcuCcp7u8/DFw==",
+  "dgSpecHash": "TGmrF+oq65yMKqbvHQFQ4gVSB+0eMpmoOZs1HRZX1BHSNBfo4cZ2vIRszSBdxTd3Ca8GIQ7nEzJcKeLdrozBQg==",
   "success": true,
   "projectFilePath": "/home/vlaeden/newgensims/UserApi/UserApi.csproj",
   "expectedPackageFiles": [
+    "/home/vlaeden/.nuget/packages/aspnetcore.healthchecks.redis/6.0.0/aspnetcore.healthchecks.redis.6.0.0.nupkg.sha512",
+    "/home/vlaeden/.nuget/packages/aspnetcore.healthchecks.sqlserver/6.0.0/aspnetcore.healthchecks.sqlserver.6.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
@@ -42,6 +44,10 @@
     "/home/vlaeden/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.0/microsoft.extensions.dependencyinjection.9.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.0/microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/microsoft.extensions.dependencymodel/9.0.0/microsoft.extensions.dependencymodel.9.0.0.nupkg.sha512",
+    "/home/vlaeden/.nuget/packages/microsoft.extensions.diagnostics.healthchecks/6.0.0/microsoft.extensions.diagnostics.healthchecks.6.0.0.nupkg.sha512",
+    "/home/vlaeden/.nuget/packages/microsoft.extensions.diagnostics.healthchecks.abstractions/6.0.0/microsoft.extensions.diagnostics.healthchecks.abstractions.6.0.0.nupkg.sha512",
+    "/home/vlaeden/.nuget/packages/microsoft.extensions.fileproviders.abstractions/6.0.0/microsoft.extensions.fileproviders.abstractions.6.0.0.nupkg.sha512",
+    "/home/vlaeden/.nuget/packages/microsoft.extensions.hosting.abstractions/6.0.0/microsoft.extensions.hosting.abstractions.6.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/microsoft.extensions.identity.core/8.0.0/microsoft.extensions.identity.core.8.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/microsoft.extensions.identity.stores/8.0.0/microsoft.extensions.identity.stores.8.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/microsoft.extensions.logging/9.0.0/microsoft.extensions.logging.9.0.0.nupkg.sha512",

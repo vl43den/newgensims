@@ -13,11 +13,15 @@ namespace UserApi.Models
             PasswordHash = passwordHasher.HashPassword(this, password);
         }
 
-        public bool ValidatePassword(string password, IPasswordHasher<User> passwordHasher)
-        {
-            var verificationResult = passwordHasher.VerifyHashedPassword(this, PasswordHash, password);
-            return verificationResult == PasswordVerificationResult.Success;
-        }
+	public bool ValidatePassword(string password, IPasswordHasher<User> passwordHasher)
+	   {
+    		if (PasswordHash == null)
+           {
+        	throw new ArgumentNullException(nameof(PasswordHash), "PasswordHash cannot be null");
+    	   }
+    		var verificationResult = passwordHasher.VerifyHashedPassword(this, PasswordHash, password);
+    		return verificationResult == PasswordVerificationResult.Success;
+	}
     }
 
     public enum UserRole

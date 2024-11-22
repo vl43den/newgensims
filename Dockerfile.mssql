@@ -1,0 +1,22 @@
+# Start with the official Microsoft SQL Server image
+FROM mcr.microsoft.com/mssql/server:2022-latest
+
+# Switch to root user to allow file system changes
+USER root
+
+# Remove duplicate repository file to avoid warnings
+RUN rm -f /etc/apt/sources.list.d/microsoft-prod.list
+
+# Set environment variables to automatically accept the EULA
+ENV ACCEPT_EULA=Y
+
+# Install necessary packages (curl, gnupg2, msodbcsql17, mssql-tools, unixodbc-dev)
+RUN apt-get update \
+    && apt-get install -y curl gnupg2 \
+    && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+    && curl https://packages.microsoft.com/config/ubuntu/22.04/prod.list > /etc/apt/sources.list.d/mssql-release.list \
+    && apt-get update \
+    && apt-get install -y mssql-tools unixodbc-dev msodbcsql17
+
+# Switch back to the default user
+USER mssql

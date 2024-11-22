@@ -6,7 +6,8 @@ using UserApi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure MSSQL Contexts
+// Register DbContexts with explicit types
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -22,7 +23,7 @@ builder.Services.AddIdentity<User, IdentityRole>()
 builder.Services.AddScoped<IUserService, AuthService>();
 builder.Services.AddScoped<IIncidentService, IncidentService>();
 
-// Add Swagger generator
+// Add Swagger
 builder.Services.AddSwaggerGen();
 
 // Add Redis Cache
@@ -32,9 +33,20 @@ builder.Services.AddStackExchangeRedisCache(options =>
     options.InstanceName = "UserApiSession:";
 });
 
+// Add Health Checks
+builder.Services.AddHealthChecks()
+    .AddSqlServer(
+        connectionString: builder.Configuration.GetConnectionString("DefaultConnection"),
+        healthQuery: "SELECT 1;")
+    .AddSqlServer(
+        connectionString: builder.Configuration.GetConnectionString("IncidentConnection"),
+        healthQuery: "SELECT 1;")
+    .AddRedis(builder.Configuration.GetConnectionString("RedisConnection"));
+
+// Add Controllers
 builder.Services.AddControllers();
 
-// Configure the app
+// Build the app
 var app = builder.Build();
 
 // Listen on all network interfaces
@@ -52,6 +64,9 @@ if (app.Environment.IsDevelopment())
 // Add authentication and authorization middleware
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Map health check endpoint
+app.MapHealthChecks("/health");
 
 app.MapControllers();
 
