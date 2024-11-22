@@ -1,25 +1,35 @@
 version: '3.8'
 
 services:
-  api:
+  userapi:
     build:
-      context: .
-      dockerfile: UserApi/Dockerfile
+      context: .  # The root of your project
+      dockerfile: UserApi/Dockerfile  # Path to the Dockerfile for the UserApi service
+    container_name: userapi-container
     ports:
-      - "5001:80"
-    networks:
-      - backend
+      - "8080:8080"  # Expose the UserApi web application on port 8080
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=mssql;Database=UserApiDb;User Id=sa;Password=YourStrong@Passw0rd;
-      - Redis__ConnectionString=redis:6379
+      - ConnectionStrings__DefaultConnection=Server=mssql;Database=UserApiDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;
+      - ConnectionStrings__IncidentConnection=Server=mssql;Database=IncidentDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;
+      - RedisConnection=redis  # Redis connection string
     depends_on:
-      - mssql
-      - redis
+      mssql:
+        condition: service_healthy  # Wait for mssql to be healthy before starting userapi
+      redis: 
+        condition: service_started  # Ensure Redis starts as well
+    networks:
+      - backend
 
-  redis:
-    image: redis:latest
-    container_name: redis
+  webapp:
+    build:
+      context: .  # Root of your project
+      dockerfile: WebApp/Dockerfile  # Path to the Dockerfile for WebApp
+    container_name: webapp-container
+    ports:
+      - "8081:8080"  # Expose the WebApp web application on port 8081
+    depends_on:
+      - userapi
     networks:
       - backend
 
@@ -28,22 +38,23 @@ services:
     container_name: mssql
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=YourStrong@Passw0rd
+      - SA_PASSWORD=YourStrong!Passw0rd
     ports:
       - "1433:1433"
+    healthcheck:
+      test: ["CMD", "sqlcmd", "-U", "sa", "-P", "YourStrong!Passw0rd", "-Q", "SELECT 1"]
+      interval: 10s
+      retries: 5
     networks:
       - backend
 
-  webapp:
-    build:
-      context: ./WebApp
-      dockerfile: Dockerfile
+  redis:
+    image: redis
+    container_name: redis
     ports:
-      - "8080:80"  # Or whatever port you want for the web application
+      - "6379:6379"
     networks:
       - backend
-    depends_on:
-      - api
 
 networks:
   backend:

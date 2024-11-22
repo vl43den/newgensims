@@ -22,11 +22,23 @@ namespace UserApi.Controllers
         [HttpPost("register")]
         public IActionResult Register([FromBody] RegisterRequest model)
         {
+            if (string.IsNullOrEmpty(model.Username) || string.IsNullOrEmpty(model.Password) || string.IsNullOrEmpty(model.Email))
+            {
+                return BadRequest(new { message = "Username, password, and email are required." });
+            }
+
+            // Check if the user already exists
+            var existingUser = _context.Users.FirstOrDefault(u => u.UserName == model.Username || u.Email == model.Email);
+            if (existingUser != null)
+            {
+                return Conflict(new { message = "Username or email already exists." });
+            }
+
             var user = new User
             {
                 UserName = model.Username, // Use UserName instead of Username
                 Name = model.Name,
-                Email = model.Email, // Assuming Email is properly initialized
+                Email = model.Email,
                 IsActive = true,
                 Role = UserRole.User // Default role
             };
@@ -37,7 +49,17 @@ namespace UserApi.Controllers
             _context.Users.Add(user);
             _context.SaveChanges();
 
-            return Ok(new { message = "User registered successfully!" });
+            return Ok(new
+            {
+                message = "User registered successfully!",
+                user = new
+                {
+                    user.UserName,
+                    user.Name,
+                    user.Email,
+                    user.Role
+                }
+            });
         }
     }
 }

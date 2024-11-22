@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using UserApi.Models;
 using UserApi.Services;
 using UserApi.Data;
-using Microsoft.Extensions.Caching.Distributed;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +34,11 @@ builder.Services.AddStackExchangeRedisCache(options =>
 
 builder.Services.AddControllers();
 
+// Configure the app
 var app = builder.Build();
+
+// Listen on all network interfaces
+builder.WebHost.UseUrls("http://0.0.0.0:5000");
 
 // Configure middleware pipeline
 if (app.Environment.IsDevelopment())
@@ -44,7 +47,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 // Add authentication and authorization middleware
 app.UseAuthentication();
