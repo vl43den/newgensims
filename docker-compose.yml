@@ -7,22 +7,12 @@ services:
       dockerfile: UserApi/Dockerfile  # Path to the Dockerfile for the UserApi service
     container_name: userapi-container
     ports:
-      - "8080:8080"  # Expose the UserApi web application on port 8080
+      - "8081:5000"  # Map internal port 5000 to host's port 8081
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=mssql;Database=UserApiDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;
       - ConnectionStrings__IncidentConnection=Server=mssql;Database=IncidentDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;
       - RedisConnection=redis  # Redis connection string
-    depends_on:
-      mssql:
-        condition: service_healthy  # Wait for mssql to be healthy before starting userapi
-      redis: 
-        condition: service_started  # Ensure Redis starts as well
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]  # Add your health check URL here
-      interval: 30s
-      retries: 3
-      start_period: 10s
     networks:
       - backend
 
@@ -32,28 +22,20 @@ services:
       dockerfile: WebApp/Dockerfile  # Path to the Dockerfile for WebApp
     container_name: webapp-container
     ports:
-      - "8081:8080"  # Expose the WebApp web application on port 8081
+      - "8082:8080"  # Expose the WebApp web application on port 8082
     depends_on:
       - userapi
     networks:
       - backend
 
   mssql:
-    build:
-      context: .  # Path to the directory containing the Dockerfile.mssql
-      dockerfile: Dockerfile.mssql  # Path to the custom Dockerfile for mssql
-    container_name: mssql
+    image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=YourStrong!Passw0rd
+      - MSSQL_PID=Developer
     ports:
       - "1433:1433"
-    healthcheck:
-      test: ["CMD", "sqlcmd", "-U", "sa", "-P", "YourStrong!Passw0rd", "-Q", "SELECT 1"]
-      interval: 10s
-      retries: 5
-    networks:
-      - backend
 
   redis:
     image: redis

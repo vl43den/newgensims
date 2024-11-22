@@ -14,11 +14,10 @@ RUN dotnet publish "WebApp.csproj" -c Release -o /app
 # Use the official .NET runtime image to run the app
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 80
+EXPOSE 8080
 
 # Copy the published app from the build image
 COPY --from=build /app .
 
-# Set the entry point for the container to run the app
-ENTRYPOINT ["dotnet", "WebApp.dll", "--urls", "http://0.0.0.0:80"]
-
+# Set the entry point for the container to run the app, listen on port 8080
+ENTRYPOINT ["dotnet", "WebApp.dll", "--urls", "http://0.0.0.0:8080"]

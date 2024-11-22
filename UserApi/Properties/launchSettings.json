@@ -4,7 +4,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:61178",
+      "applicationUrl": "http://localhost:5184",
       "sslPort": 44341
     }
   },
@@ -14,7 +14,7 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:5184", // Changed port from 5242 to 5184
+      "applicationUrl": "http://localhost:5184", // Use the same port as Docker (5184)
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -24,7 +24,7 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7225;http://localhost:5184", // Changed port from 5242 to 7225
+      "applicationUrl": "https://localhost:7225;http://localhost:5184", // Updated port
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

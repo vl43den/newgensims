@@ -19,7 +19,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 
 # Expose the port
-EXPOSE 5000
+EXPOSE 81
 
 # Copy the published files from the build stage
 COPY --from=build /app/publish .
