@@ -1,7 +1,7 @@
 # NewgenSIMS (New Generation Security Incident Management System)
 
-[![.NET](https://img.shields.io/badge/.NET-6.0-blue)](https://dotnet.microsoft.com/) 
-[![Entity Framework Core](https://img.shields.io/badge/Entity%20Framework%20Core-6.0-green)](https://docs.microsoft.com/en-us/ef/) 
+[![.NET](https://img.shields.io/badge/.NET-8.0-blue)](https://dotnet.microsoft.com/) 
+[![Entity Framework Core](https://img.shields.io/badge/Entity%20Framework%20Core-8.0-green)](https://docs.microsoft.com/en-us/ef/) 
 [![Redis](https://img.shields.io/badge/Redis-6.0-red)](https://redis.io/) 
 
 ---
@@ -75,7 +75,7 @@ Das System besteht aus folgenden Komponenten:
 ## Installation und Ausführung
 
 ### Voraussetzungen
-- [.NET 6.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
+- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Docker](https://www.docker.com/)
 - Redis und SQL Server
 
