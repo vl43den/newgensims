@@ -1,4 +1,4 @@
-# SIMS (Security Incident Management System)
+# NewgenSIMS (Security Incident Management System)
 
 [![.NET](https://img.shields.io/badge/.NET-6.0-blue)](https://dotnet.microsoft.com/) 
 [![Entity Framework Core](https://img.shields.io/badge/Entity%20Framework%20Core-6.0-green)](https://docs.microsoft.com/en-us/ef/) 
