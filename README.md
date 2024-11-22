@@ -65,7 +65,7 @@ Das System besteht aus folgenden Komponenten:
 
 ## Technische Details
 
-- **Framework**: ASP.NET Core 6.0
+- **Framework**: ASP.NET Core 8.0
 - **Datenbank**: SQL Server und Redis
 - **Architektur**: Microservices mit Docker-Containern
 - **Programmiersprache**: C#
@@ -87,11 +87,11 @@ Das System besteht aus folgenden Komponenten:
    ```
 2. **Docker-Container starten**:
    ```bash
-   docker-compose up
+   docker-compose up --build
    ```
 3. **API starten**:
    ```bash
-   dotnet run --project ./API
+   dotnet run --project ./WebApp oder dotnet run --project ./UserApi
    ```
 
 ---
