@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using UserApi.Models;
 using UserApi.Services;
 using UserApi.Data;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +35,10 @@ builder.Services.AddStackExchangeRedisCache(options =>
     options.Configuration = builder.Configuration.GetConnectionString("RedisConnection");
     options.InstanceName = "UserApiSession:";
 });
+
+builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+    ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("RedisConnection")));
+builder.Services.AddScoped<ISessionService, RedisSessionService>();
 
 // Add Health Checks for monitoring
 builder.Services.AddHealthChecks()

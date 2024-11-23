@@ -1376,9 +1376,10 @@
           "lib/net6.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
-      "StackExchange.Redis/2.6.122": {
+      "StackExchange.Redis/2.8.16": {
         "type": "package",
         "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
           "Pipelines.Sockets.Unofficial": "2.2.8"
         },
         "compile": {
@@ -4457,10 +4458,10 @@
         "sqlitepclraw.provider.e_sqlite3.nuspec"
       ]
     },
-    "StackExchange.Redis/2.6.122": {
-      "sha512": "wp7mvGpFXaevfZ07/SDeh/6YHUJEgwJIGyjbDWKBYbPwKMJQYFz9zFEmBptqtVzqvSgft5nlewwutoaMaG0LPA==",
+    "StackExchange.Redis/2.8.16": {
+      "sha512": "WaoulkOqOC9jHepca3JZKFTqndCWab5uYS7qCzmiQDlrTkFaDN7eLSlEfHycBxipRnQY9ppZM7QSsWAwUEGblw==",
       "type": "package",
-      "path": "stackexchange.redis/2.6.122",
+      "path": "stackexchange.redis/2.8.16",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4474,7 +4475,7 @@
         "lib/netcoreapp3.1/StackExchange.Redis.xml",
         "lib/netstandard2.0/StackExchange.Redis.dll",
         "lib/netstandard2.0/StackExchange.Redis.xml",
-        "stackexchange.redis.2.6.122.nupkg.sha512",
+        "stackexchange.redis.2.8.16.nupkg.sha512",
         "stackexchange.redis.nuspec"
       ]
     },
@@ -5551,6 +5552,7 @@
       "Microsoft.Extensions.Caching.StackExchangeRedis >= 8.0.0",
       "Microsoft.Extensions.Configuration.EnvironmentVariables >= 9.0.0",
       "Newtonsoft.Json >= 13.0.3",
+      "StackExchange.Redis >= 2.8.16",
       "Swashbuckle.AspNetCore >= 7.0.0",
       "System.IdentityModel.Tokens.Jwt >= 8.2.1"
     ]
@@ -5655,6 +5657,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
+          },
+          "StackExchange.Redis": {
+            "target": "Package",
+            "version": "[2.8.16, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

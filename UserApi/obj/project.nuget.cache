@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1KnL3lH7bN6uNQ6t14cViEgjz5D6nQ403nJjC58b3qMAgZvguUA3yr45JByLrUfil04PSQ3pzxtgQ1J3hrhpFw==",
+  "dgSpecHash": "MbA7/Fh1tCl2VBONcYmrdwRe1/UV1Fru9T/op2TlLUNa2R3q/r9J3HVGJVxEvHPHDxGMC0h7F3cQkFa2cUreeQ==",
   "success": true,
   "projectFilePath": "/home/vlaeden/newgensims/UserApi/UserApi.csproj",
   "expectedPackageFiles": [
@@ -71,7 +71,7 @@
     "/home/vlaeden/.nuget/packages/sqlitepclraw.core/2.1.6/sqlitepclraw.core.2.1.6.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.1.6/sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/sqlitepclraw.provider.e_sqlite3/2.1.6/sqlitepclraw.provider.e_sqlite3.2.1.6.nupkg.sha512",
-    "/home/vlaeden/.nuget/packages/stackexchange.redis/2.6.122/stackexchange.redis.2.6.122.nupkg.sha512",
+    "/home/vlaeden/.nuget/packages/stackexchange.redis/2.8.16/stackexchange.redis.2.8.16.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/swashbuckle.aspnetcore/7.0.0/swashbuckle.aspnetcore.7.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/swashbuckle.aspnetcore.swagger/7.0.0/swashbuckle.aspnetcore.swagger.7.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/swashbuckle.aspnetcore.swaggergen/7.0.0/swashbuckle.aspnetcore.swaggergen.7.0.0.nupkg.sha512",
