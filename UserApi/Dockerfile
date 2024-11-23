@@ -2,23 +2,24 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy project files and restore dependencies
+# Copy the UserApi project file and restore dependencies
 COPY UserApi/UserApi.csproj UserApi/
 RUN dotnet restore "UserApi/UserApi.csproj"
 
-# Copy the rest of the app's files
+# Copy the rest of the application files (ensure the files are placed in the correct directories)
 COPY . .
 
+# Set the correct working directory for the UserApi project
 WORKDIR /src/UserApi
 
-# Publish the app to the /app/publish directory
+# Publish the application to the /app/publish directory
 RUN dotnet publish "UserApi.csproj" -c Release -o /app/publish
 
 # Step 2: Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 
-# Expose the port
+# Expose the application port
 EXPOSE 81
 
 # Copy the published files from the build stage

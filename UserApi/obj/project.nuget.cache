@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WJt7jmxyRZE2MO1UVI8/3zvgsr88GoOM2BNieBQdJYrYoP/R4Zr21qoQpT14VJC5wXxSWjVLwpzWZNRnNkGPzg==",
+  "dgSpecHash": "1KnL3lH7bN6uNQ6t14cViEgjz5D6nQ403nJjC58b3qMAgZvguUA3yr45JByLrUfil04PSQ3pzxtgQ1J3hrhpFw==",
   "success": true,
   "projectFilePath": "/home/vlaeden/newgensims/UserApi/UserApi.csproj",
   "expectedPackageFiles": [
@@ -37,7 +37,9 @@
     "/home/vlaeden/.nuget/packages/microsoft.extensions.caching.abstractions/8.0.0/microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/microsoft.extensions.caching.memory/8.0.0/microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/microsoft.extensions.caching.stackexchangeredis/8.0.0/microsoft.extensions.caching.stackexchangeredis.8.0.0.nupkg.sha512",
-    "/home/vlaeden/.nuget/packages/microsoft.extensions.configuration.abstractions/8.0.0/microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
+    "/home/vlaeden/.nuget/packages/microsoft.extensions.configuration/9.0.0/microsoft.extensions.configuration.9.0.0.nupkg.sha512",
+    "/home/vlaeden/.nuget/packages/microsoft.extensions.configuration.abstractions/9.0.0/microsoft.extensions.configuration.abstractions.9.0.0.nupkg.sha512",
+    "/home/vlaeden/.nuget/packages/microsoft.extensions.configuration.environmentvariables/9.0.0/microsoft.extensions.configuration.environmentvariables.9.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/microsoft.extensions.dependencymodel/8.0.0/microsoft.extensions.dependencymodel.8.0.0.nupkg.sha512",
@@ -50,7 +52,7 @@
     "/home/vlaeden/.nuget/packages/microsoft.extensions.logging/8.0.0/microsoft.extensions.logging.8.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/microsoft.extensions.options/8.0.0/microsoft.extensions.options.8.0.0.nupkg.sha512",
-    "/home/vlaeden/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "/home/vlaeden/.nuget/packages/microsoft.extensions.primitives/9.0.0/microsoft.extensions.primitives.9.0.0.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/microsoft.identity.client/4.47.2/microsoft.identity.client.4.47.2.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/microsoft.identity.client.extensions.msal/2.19.3/microsoft.identity.client.extensions.msal.2.19.3.nupkg.sha512",
     "/home/vlaeden/.nuget/packages/microsoft.identitymodel.abstractions/8.2.1/microsoft.identitymodel.abstractions.8.2.1.nupkg.sha512",

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Log Entry</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="add-log-entry.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Log Entry</h1>
+        <form id="logEntryForm">
+            <div class="form-group">
+                <label for="timestamp">Timestamp:</label>
+                <input type="datetime-local" id="timestamp" name="timestamp" required>
+            </div>
+            <div class="form-group">
+                <label for="logLevel">Log Level:</label>
+                <select id="logLevel" name="logLevel" required>
+                    <option value="" disabled selected>Select log level</option>
+                    <option value="Info">Info</option>
+                    <option value="Warning">Warning</option>
+                    <option value="Error">Error</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="formMessages"></div>
+    </div>
+</body>
+</html>

@@ -6,7 +6,10 @@ using UserApi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Register DbContexts with explicit types
+// Add configuration for environment variables
+builder.Configuration.AddEnvironmentVariables();
+
+// Register DbContexts with connection strings from environment variables
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 

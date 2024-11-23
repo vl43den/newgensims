@@ -7,12 +7,15 @@ using Microsoft.Extensions.Caching.Distributed;  // Add Redis using this namespa
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add configuration for environment variables
+builder.Configuration.AddEnvironmentVariables();
+
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add DbContext for MSSQL
+// Add DbContext for MSSQL using environment variables
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); // Use MSSQL
 

@@ -1,39 +1,13 @@
-version: '3.8'
-
+version: "3.9"
 services:
-  userapi:
-    build:
-      context: .  # The root of your project
-      dockerfile: UserApi/Dockerfile  # Path to the Dockerfile for the UserApi service
-    container_name: userapi-container
-    ports:
-      - "8081:5000"  # Map internal port 5000 to host's port 8081
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=mssql;Database=UserApiDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;
-      - ConnectionStrings__IncidentConnection=Server=mssql;Database=IncidentDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;
-      - RedisConnection=redis  # Redis connection string
-    networks:
-      - backend
-
-  webapp:
-    build:
-      context: .  # Root of your project
-      dockerfile: WebApp/Dockerfile  # Path to the Dockerfile for WebApp
-    container_name: webapp-container
-    ports:
-      - "8082:8080"  # Expose the WebApp web application on port 8082
-    depends_on:
-      - userapi
-    networks:
-      - backend
-
-  mssql:
+  mssql-container:
     image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql-container
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=YourStrong!Passw0rd
-      - MSSQL_PID=Developer
+      - SA_PASSWORD=${DB_PASSWORD}  # Make sure this references the .env file variable
+    volumes:
+      - mssql-data:/var/opt/mssql
     ports:
       - "1433:1433"
 
@@ -42,9 +16,42 @@ services:
     container_name: redis
     ports:
       - "6379:6379"
-    networks:
-      - backend
 
-networks:
-  backend:
-    driver: bridge
+  userapi:
+    build:
+      context: .
+      dockerfile: UserApi/Dockerfile
+    container_name: userapi-container
+    environment:
+      - ConnectionStrings__DefaultConnection=${DEFAULT_CONNECTION_STRING}
+      - ConnectionStrings__IncidentConnection=${INCIDENT_CONNECTION_STRING}
+      - ConnectionStrings__RedisConnection=${REDIS_CONNECTION_STRING}
+      - MSSQL_SERVER=${MSSQL_SERVER}
+      - MSSQL_USER=${MSSQL_USER}
+      - MSSQL_PASSWORD=${DB_PASSWORD}
+      - USERAPI_DB=${USERAPI_DB}
+      - INCIDENT_DB=${INCIDENT_DB}
+    depends_on:
+      - mssql-container
+      - redis
+    user: root  # Run as root user to avoid permission issues
+    ports:
+      - "8081:5000"
+
+  webapp:
+    build:
+      context: .
+      dockerfile: WebApp/Dockerfile
+    container_name: webapp-container
+    environment:
+      - ConnectionStrings__DefaultConnection=${DEFAULT_CONNECTION_STRING}
+      - ConnectionStrings__RedisConnection=${REDIS_CONNECTION_STRING}
+      - USERAPI_BASEURL=${USERAPI_BASEURL}
+    ports:
+      - "8082:8080"
+    depends_on:
+      - userapi
+      - redis
+
+volumes:
+  mssql-data:
