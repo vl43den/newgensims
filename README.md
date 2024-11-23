@@ -124,10 +124,10 @@ Dieses Projekt steht unter der [MIT-Lizenz](LICENSE).
 ## Diagramme
 
 ### ER-Diagramm
-![ER-Diagramm](https://via.placeholder.com/400?text=ER-Diagram)
+![ER-Diagramm](https://github.com/vl43den/newgensims/blob/master/ImagesAndDiagrams/ER.svg)
 
 ### Klassendiagramm
-![Klassendiagramm](https://via.placeholder.com/400?text=Klassendiagramm)
+![Klassendiagramm](https://github.com/vl43den/newgensims/blob/master/ImagesAndDiagrams/uml.svg)
 
 ---
 
