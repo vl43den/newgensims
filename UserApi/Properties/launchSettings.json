@@ -4,7 +4,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:5000",
+      "applicationUrl": "http://localhost:5000", // Localhost port for IIS Express (useful for local dev without Docker)
       "sslPort": 44341
     }
   },
@@ -13,26 +13,8 @@
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:5000", // Use the same port as Docker (5184)
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "https": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7225;http://localhost:5000", // Updated port
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
+      "launchUrl": "swagger", // This will open Swagger UI in your browser (http://localhost:5000/swagger)
+      "applicationUrl": "http://localhost:8081", // Docker container is mapped to port 8081 for the UserApi
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

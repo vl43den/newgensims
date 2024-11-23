@@ -1,7 +1,7 @@
 # Step 1: Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-
+ENV ASPNETCORE_ENVIRONMENT=Development
 # Copy the UserApi project file and restore dependencies
 COPY UserApi/UserApi.csproj UserApi/
 RUN dotnet restore "UserApi/UserApi.csproj"
