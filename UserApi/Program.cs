@@ -55,8 +55,7 @@ builder.Services.AddControllers();
 var app = builder.Build();
 
 // Ensure app is listening on all interfaces (useful for Docker)
-app.Urls.Add("http://0.0.0.0:5000"); // Ensure app is listening on all interfaces for Docker
-
+app.Urls.Add("http://0.0.0.0:5000");
 // Configure middleware pipeline
 
 // Enable Swagger
