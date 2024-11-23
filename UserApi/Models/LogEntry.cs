@@ -1,6 +1,6 @@
 using System;
 
-namespace newgensims.Models
+namespace UserApi.Models  // Correct namespace for the model
 {
     public class LogEntry
     {

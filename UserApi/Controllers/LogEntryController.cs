@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using newgensims.Models;
-using newgensims.Services;
+using UserApi.Models;  // Correct namespace for the LogEntry model
+using UserApi.Services;
 
-namespace newgensims.Controllers
+namespace UserApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

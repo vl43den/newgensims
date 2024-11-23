@@ -5,7 +5,7 @@ services:
     container_name: mssql-container
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=${DB_PASSWORD}  # Make sure this references the .env file variable
+      - SA_PASSWORD=${MSSQL_SA_PASSWORD} 
     volumes:
       - mssql-data:/var/opt/mssql
     ports:

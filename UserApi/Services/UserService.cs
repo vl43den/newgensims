@@ -21,7 +21,7 @@ namespace UserApi.Services
             return passwordValid ? user : null;
         }
 
-        public Task<User> GetUserByIdAsync(string id)
+        public Task<User?> GetUserByIdAsync(string id)
         {
             return _userManager.FindByIdAsync(id);
         }

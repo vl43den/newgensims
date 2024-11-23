@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;  // For UserManager<T> and related classes
 using UserApi.Models;   // Replace with the actual namespace where your 'User' model is defined
 using UserApi.Services; // Replace with the actual namespace where 'IUserService' is defined
-
+using UserApi.Data; // Ensure the correct namespace is used
 
 
 
