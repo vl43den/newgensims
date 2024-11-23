@@ -104,6 +104,8 @@ Das System besteht aus folgenden Komponenten:
 - [X] Frontend-Integration
 - [ ] Erweiterte Log-Analyse
 - [ ] Unit-Tests
+- [ ] Chatbot
+- [ ] Darkmode
 
 ---
 
